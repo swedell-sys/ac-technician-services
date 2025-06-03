@@ -2,10 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SS Airflow Technician Services</title>
     <!-- Google Fonts for modern typography -->
     <link
@@ -235,14 +232,15 @@
       }
 
       /* CHATBOT STYLES */
-      /* -- DESKTOP VERSION (unchanged) -- */
+
+      /* Desktop Chatbot: Now anchored at bottom-right */
       #chatbot.desktop {
         display: flex;
         position: fixed;
-        top: 0;
-        right: 0;
+        bottom: 20px;
+        right: 20px;
         width: 40%;
-        height: 50%; /* Adjusted to 50% of viewport height */
+        height: 50%;
         background: #e7f3ff;
         border-left: 1px solid #001f3f;
         box-shadow: -2px 0 10px rgba(0, 31, 63, 0.5);
@@ -250,7 +248,7 @@
         z-index: 1001;
       }
 
-      /* -- MOBILE VERSION -- */
+      /* MOBILE CHATBOT */
       @media (max-width: 767px) {
         #chatbot.mobile {
           display: flex;
@@ -267,9 +265,9 @@
           height: 60px;
           overflow: hidden;
           border-radius: 50%;
-          background: #001f3f; /* Navy blue */
+          background: #001f3f;
         }
-        /* Expanded state: appears as a panel covering 50% of the viewport width and 30% of the viewport height */
+        /* Expanded state: appears as a panel covering 50% width and 30% height of viewport */
         #chatbot.mobile.expanded {
           width: 50vw;
           height: 30vh;
@@ -293,7 +291,7 @@
           padding: 8px 12px;
           font-size: 0.9rem;
         }
-        /* Ensure mobile chatbot remains at bottom-right */
+        /* Ensure the mobile chatbot remains pinned to bottom-right */
         #chatbot.mobile {
           bottom: 20px;
           right: 20px;
@@ -304,7 +302,7 @@
         }
       }
 
-      /* CHATBOT TOGGLE BUTTON */
+      /* CHATBOT TOGGLE BUTTON: Always visible */
       #chatbot-toggle {
         position: fixed;
         bottom: 20px;
@@ -317,8 +315,8 @@
         cursor: pointer;
         z-index: 1002;
       }
-      
-      /* Ensure the messages container scrolls independently */
+
+      /* Ensure the chat messages container scrolls independently */
       #chatbot .messages {
         flex: 1;
         padding: 15px;
@@ -445,7 +443,8 @@
       <h2>Contact Us</h2>
       <p>Office Address: Kukatpally, Hyderabad, India.</p>
       <p>Contact: 9603317909</p>
-      <p>Email:
+      <p>
+        Email:
         <a href="mailto:sweneasbel@gmail.com">sweneasbel@gmail.com</a>
       </p>
     </section>
@@ -453,8 +452,9 @@
     <!-- FOOTER with GOOGLE MAP EMBED -->
     <footer>
       <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15125.80286878244!2d78.2432324!3d17.412281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7%3A0xae93b78392bafbc2!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1685337021378!5m2!1sen!2sin" 
-          allowfullscreen="" 
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15125.80286878244!2d78.2432324!3d17.412281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7%3A0xae93b78392bafbc2!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1685337021378!5m2!1sen!2sin"
+          allowfullscreen=""
           loading="lazy">
         </iframe>
       </div>
@@ -516,7 +516,7 @@
           message: document.getElementById("message").value,
           timestamp: Date.now()
         };
-        
+      
         push(ref(db, "bookings"), bookingData)
           .then(() => {
             bookingForm.reset();
@@ -539,18 +539,16 @@
         var chatbot = document.getElementById("chatbot");
         var toggleBtn = document.getElementById("chatbot-toggle");
         if (window.innerWidth < 768) {
-          // Mobile mode:
+          // MOBILE MODE
           if (!chatbot.classList.contains("mobile")) {
             chatbot.classList.add("mobile");
           }
           if (chatbot.classList.contains("collapsed")) {
-            // Expand mobile chat and hide toggle button.
             chatbot.classList.remove("collapsed");
             chatbot.classList.add("expanded");
             toggleBtn.style.display = "none";
             history.pushState({ chatOpen: true }, "", location.href);
           } else if (chatbot.classList.contains("expanded")) {
-            // Collapse mobile chat and show toggle button.
             chatbot.classList.remove("expanded");
             chatbot.classList.add("collapsed");
             toggleBtn.style.display = "block";
@@ -559,7 +557,7 @@
             }
           }
         } else {
-          // Desktop mode:
+          // DESKTOP MODE
           if (chatbot.style.display === "none" || chatbot.style.display === "") {
             chatbot.style.display = "flex";
             chatbot.classList.add("desktop");
@@ -619,7 +617,7 @@
       }
       window.scrollToSection = scrollToSection;
       
-      // Set default mobile state (collapsed) on page load
+      // Set default mobile state
       document.addEventListener("DOMContentLoaded", function () {
         if (window.innerWidth < 768) {
           var chatbot = document.getElementById("chatbot");
@@ -627,7 +625,7 @@
         }
       });
       
-      // Listen for the back button (popstate) on mobile devices
+      // Listen for the back button (popstate) on mobile
       window.addEventListener("popstate", function (event) {
         if (window.innerWidth < 768) {
           var chatbot = document.getElementById("chatbot");
