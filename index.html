@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>SS Airflow Technician Services</title>
     <!-- Google Fonts for modern typography -->
     <link
@@ -10,12 +13,12 @@
       rel="stylesheet"
     />
     <style>
-      /* Global Styles */
+      /* GLOBAL STYLES */
       body {
         margin: 0;
         padding: 0;
         font-family: 'Roboto', sans-serif;
-        background: #001f3f; /* full navy blue background */
+        background: #001f3f; /* Full navy blue background */
         color: #fff;
       }
       a {
@@ -23,7 +26,7 @@
         color: inherit;
       }
 
-      /* Navigation Bar */
+      /* NAVIGATION */
       nav {
         position: fixed;
         top: 0;
@@ -53,7 +56,7 @@
         color: #e0e0e0;
       }
 
-      /* Hero Section */
+      /* HERO SECTION */
       #homeSection {
         position: relative;
         background: url('https://images.unsplash.com/photo-1581091870627-3eab5eded004?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')
@@ -108,7 +111,7 @@
         background: #000f23;
       }
 
-      /* Section Styles */
+      /* SECTION STYLES */
       section {
         padding: 80px 20px;
         max-width: 1200px;
@@ -123,7 +126,7 @@
         letter-spacing: 1.5px;
       }
 
-      /* Service Blocks (Card Design) */
+      /* SERVICE BLOCKS (CARDS) */
       .service-blocks {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -170,7 +173,7 @@
         border-radius: 10px;
       }
 
-      /* Booking Form */
+      /* BOOKING FORM */
       .booking-form {
         background: #002a4d;
         border: 1px solid #00467a;
@@ -215,14 +218,13 @@
         transition: opacity 1s ease-out;
       }
 
-      /* Footer with Map Embed */
+      /* FOOTER with MAP EMBED */
       footer {
         background: #001f3f;
         color: #fff;
         padding: 20px;
         text-align: center;
       }
-      /* Updated map container CSS */
       .map-container {
         margin-bottom: 20px;
       }
@@ -232,8 +234,10 @@
         border: 0;
       }
 
-      /* Chatbot Sidebar and Mobile Adjustments */
-      #chatbot {
+      /* CHATBOT STYLES */
+      /* Desktop: unchanged – shown as a sidebar when toggled */
+      #chatbot.desktop {
+        display: flex;
         position: fixed;
         top: 0;
         right: 0;
@@ -242,49 +246,47 @@
         background: #e7f3ff;
         border-left: 1px solid #001f3f;
         box-shadow: -2px 0 10px rgba(0, 31, 63, 0.5);
-        display: none;
         flex-direction: column;
         z-index: 1001;
       }
-      #chatbot header {
-        background: #001f3f;
-        color: #fff;
-        padding: 15px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+
+      /* Mobile: use "mobile" class with "collapsed" and "expanded" states */
+      @media (max-width: 767px) {
+        #chatbot.mobile {
+          display: flex;
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          transition: all 0.3s ease;
+          flex-direction: column; /* ensure header is at the top */
+        }
+        /* Collapsed state: show only a small circular button (60x60px) */
+        #chatbot.mobile.collapsed {
+          width: 60px;
+          height: 60px;
+          overflow: hidden;
+          border-radius: 50%;
+        }
+        /* Expanded state: full width, covering 25% of the viewport height from the bottom */
+        #chatbot.mobile.expanded {
+          width: 100%;
+          height: 25vh;
+          border-radius: 0;
+        }
+        #chatbot.mobile header {
+          padding: 10px;
+          font-size: 0.9rem;
+        }
+        #chatbot.mobile .input-area input {
+          padding: 8px;
+        }
+        #chatbot.mobile .input-area button {
+          padding: 8px 12px;
+          font-size: 0.9rem;
+        }
       }
-      #chatbot header button {
-        background: #000f23;
-        border: none;
-        color: #fff;
-        padding: 8px 12px;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-      #chatbot .messages {
-        flex: 1;
-        padding: 15px;
-        overflow-y: auto;
-        background: #f0f8ff;
-        color: #333;
-      }
-      #chatbot .input-area {
-        display: flex;
-        border-top: 1px solid #001f3f;
-      }
-      #chatbot .input-area input {
-        flex: 1;
-        padding: 10px;
-        border: none;
-      }
-      #chatbot .input-area button {
-        background: #001f3f;
-        color: #fff;
-        border: none;
-        padding: 10px 15px;
-        cursor: pointer;
-      }
+      
+      /* CHATBOT TOGGLE BUTTON: always visible */
       #chatbot-toggle {
         position: fixed;
         bottom: 20px;
@@ -296,44 +298,6 @@
         border-radius: 5px;
         cursor: pointer;
         z-index: 1002;
-      }
-
-      /* Responsive Adjustments for Mobile Devices */
-      @media (max-width: 768px) {
-        nav ul li {
-          margin: 0 15px;
-        }
-        #homeSection h1 {
-          font-size: 2.5rem;
-        }
-        #homeSection p {
-          font-size: 1rem;
-        }
-        #chatbot {
-          position: fixed;
-          bottom: 0;
-          right: 0;
-          width: 100%;
-          height: 40%;
-          border-left: none;
-          border-top: 1px solid #001f3f;
-          box-shadow: 0 -2px 10px rgba(0, 31, 63, 0.5);
-        }
-        #chatbot header {
-          padding: 10px;
-          font-size: 0.9rem;
-        }
-        #chatbot .input-area input {
-          padding: 8px;
-        }
-        #chatbot .input-area button {
-          padding: 8px 12px;
-          font-size: 0.9rem;
-        }
-        #chatbot-toggle {
-          padding: 10px 15px;
-          font-size: 0.9rem;
-        }
       }
     </style>
   </head>
@@ -347,7 +311,7 @@
         <li><a href="#contactSection">Contact</a></li>
       </ul>
     </nav>
-
+    
     <!-- Hero Section -->
     <section id="homeSection">
       <h1>Welcome to SS Airflow Technician Services</h1>
@@ -356,7 +320,7 @@
         Discover Our Services
       </button>
     </section>
-
+    
     <!-- Services Section -->
     <section id="servicesSection">
       <h2>Our Services</h2>
@@ -384,7 +348,7 @@
             </ul>
           </div>
         </div>
-        <!-- AC Repair &amp; Maintenance -->
+        <!-- AC Repair & Maintenance -->
         <div class="service-block">
           <img
             src="https://3.imimg.com/data3/BH/SR/MY-8941393/split-ac-service-1000x1000.jpg"
@@ -434,7 +398,7 @@
         </div>
       </div>
     </section>
-
+    
     <!-- Booking Section -->
     <section id="bookingSection">
       <h2>Book a Service</h2>
@@ -455,7 +419,7 @@
         <div id="formStatus"></div>
       </div>
     </section>
-
+    
     <!-- Contact Section -->
     <section id="contactSection">
       <h2>Contact Us</h2>
@@ -466,24 +430,22 @@
         <a href="mailto:sweneasbel@gmail.com">sweneasbel@gmail.com</a>
       </p>
     </section>
-
+    
     <!-- Footer with Google Map Embed -->
     <footer>
       <div class="map-container">
-        <!-- Embed your Google Map here. Replace the src below with your generated embed code if needed. -->
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15125.80286878244!2d78.2432324!3d17.412281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7%3A0xae93b78392bafbc2!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1685337021378!5m2!1sen!2sin"
-          style="border:0;"
           allowfullscreen=""
-          loading="lazy"
-        ></iframe>
+          loading="lazy">
+        </iframe>
       </div>
       <p>&copy; 2025 SS Airflow Technician Services. All rights reserved.</p>
     </footer>
-
+    
     <!-- Chatbot Toggle Button -->
     <button id="chatbot-toggle" onclick="toggleChatbot()">Chat with us!</button>
-
+    
     <!-- Chatbot Sidebar -->
     <div id="chatbot">
       <header>
@@ -494,21 +456,17 @@
         <p><strong>Chatbot:</strong> Hi, how can I help you today?</p>
       </div>
       <div class="input-area">
-        <input
-          type="text"
-          id="chatInput"
-          placeholder="Type your message..."
-        />
+        <input type="text" id="chatInput" placeholder="Type your message..." />
         <button onclick="sendMessage()">Send</button>
       </div>
     </div>
-
+    
     <!-- Firebase & Custom JavaScript -->
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
       import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
-
+    
       // Firebase configuration
       const firebaseConfig = {
         apiKey: "AIzaSyCyaQDeARmkZwdOuo8v0UZmPUzyXERdJ5w",
@@ -520,16 +478,16 @@
         appId: "1:831580257151:web:ab95a77ddbec2ccbd3f84a",
         measurementId: "G-XMVGN2MY2E"
       };
-
+    
       // Initialize Firebase and Analytics
       const appFirebase = initializeApp(firebaseConfig);
       const analytics = getAnalytics(appFirebase);
       const db = getDatabase(appFirebase);
-
+    
       // Booking form submission
       const bookingForm = document.getElementById("bookingForm");
       const formStatus = document.getElementById("formStatus");
-
+    
       bookingForm.addEventListener("submit", (e) => {
         e.preventDefault();
         const bookingData = {
@@ -540,15 +498,13 @@
           message: document.getElementById("message").value,
           timestamp: Date.now()
         };
-
+    
         push(ref(db, "bookings"), bookingData)
           .then(() => {
             bookingForm.reset();
             formStatus.innerText =
               "Thank you for your booking! We will contact you soon.";
-            setTimeout(() => {
-              formStatus.style.opacity = "0";
-            }, 3000);
+            setTimeout(() => { formStatus.style.opacity = "0"; }, 3000);
             setTimeout(() => {
               formStatus.innerText = "";
               formStatus.style.opacity = "1";
@@ -559,41 +515,63 @@
             formStatus.innerText = "Error: " + error.message;
           });
       });
-
+    
       // Chatbot functions
       function toggleChatbot() {
-        const chatbot = document.getElementById("chatbot");
-        const toggleBtn = document.getElementById("chatbot-toggle");
-        if (chatbot.style.display === "none" || chatbot.style.display === "") {
-          chatbot.style.display = "flex";
-          toggleBtn.style.display = "none";
+        var chatbot = document.getElementById("chatbot");
+        if (window.innerWidth < 768) {
+          // Mobile mode: ensure "mobile" class is added.
+          if (!chatbot.classList.contains("mobile")) {
+            chatbot.classList.add("mobile");
+          }
+          // Toggle between collapsed and expanded states.
+          if (chatbot.classList.contains("collapsed")) {
+            chatbot.classList.remove("collapsed");
+            chatbot.classList.add("expanded");
+            // Push state to handle back button
+            history.pushState({ chatOpen: true }, "", location.href);
+          } else if (chatbot.classList.contains("expanded")) {
+            chatbot.classList.remove("expanded");
+            chatbot.classList.add("collapsed");
+            if (history.state && history.state.chatOpen) {
+              history.back();
+            }
+          }
         } else {
-          chatbot.style.display = "none";
-          toggleBtn.style.display = "block";
+          // Desktop mode: toggle display (unchanged)
+          if (chatbot.style.display === "none" || chatbot.style.display === "") {
+            chatbot.style.display = "flex";
+            chatbot.classList.add("desktop");
+            document.getElementById("chatbot-toggle").style.display = "none";
+          } else {
+            chatbot.style.display = "none";
+            chatbot.classList.remove("desktop");
+            document.getElementById("chatbot-toggle").style.display = "block";
+          }
         }
       }
       window.toggleChatbot = toggleChatbot;
-
+    
       function sendMessage() {
         const chatInput = document.getElementById("chatInput");
         const message = chatInput.value.trim();
         if (message === "") return;
         const chatMessages = document.getElementById("chatMessages");
-
+    
         const userMessage = document.createElement("p");
         userMessage.innerHTML = "<strong>You:</strong> " + message;
         chatMessages.appendChild(userMessage);
         chatInput.value = "";
-
+    
         const botResponse = getBotResponse(message);
         const botMessage = document.createElement("p");
         botMessage.innerHTML = "<strong>Chatbot:</strong> " + botResponse;
         chatMessages.appendChild(botMessage);
-
+    
         chatMessages.scrollTop = chatMessages.scrollHeight;
       }
       window.sendMessage = sendMessage;
-
+    
       function getBotResponse(message) {
         message = message.toLowerCase();
         if (message.includes("price") || message.includes("cost")) {
@@ -613,12 +591,32 @@
         }
       }
       window.getBotResponse = getBotResponse;
-
+    
       function scrollToSection(sectionId) {
         const section = document.getElementById(sectionId);
         section.scrollIntoView({ behavior: "smooth" });
       }
       window.scrollToSection = scrollToSection;
+    
+      // Set default mobile state (collapsed) on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        if (window.innerWidth < 768) {
+          var chatbot = document.getElementById("chatbot");
+          chatbot.classList.add("mobile", "collapsed");
+        }
+      });
+    
+      // Listen for the back button (popstate) on mobile devices
+      window.addEventListener("popstate", function (event) {
+        if (window.innerWidth < 768) {
+          var chatbot = document.getElementById("chatbot");
+          if (chatbot && chatbot.classList.contains("expanded")) {
+            chatbot.classList.remove("expanded");
+            chatbot.classList.add("collapsed");
+            history.pushState(null, "", location.href);
+          }
+        }
+      });
     </script>
   </body>
 </html>
