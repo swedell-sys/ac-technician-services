@@ -2,10 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SS Airflow Technician Services</title>
     <!-- Google Fonts for modern typography -->
     <link
@@ -18,7 +15,7 @@
         margin: 0;
         padding: 0;
         font-family: 'Roboto', sans-serif;
-        background: #001f3f; /* Full navy blue background */
+        background: #001f3f; /* full navy blue background */
         color: #fff;
       }
       a {
@@ -235,7 +232,7 @@
       }
 
       /* CHATBOT STYLES */
-      /* Desktop: unchanged – shown as a sidebar when toggled */
+      /* Desktop Chatbot (remains unchanged) */
       #chatbot.desktop {
         display: flex;
         position: fixed;
@@ -250,7 +247,7 @@
         z-index: 1001;
       }
 
-      /* Mobile: use "mobile" class with "collapsed" and "expanded" states */
+      /* Mobile Chatbot: use "mobile" + collapsed/expanded states */
       @media (max-width: 767px) {
         #chatbot.mobile {
           display: flex;
@@ -258,20 +255,22 @@
           bottom: 20px;
           right: 20px;
           transition: all 0.3s ease;
-          flex-direction: column; /* ensure header is at the top */
+          flex-direction: column;
+          background: #e7f3ff;  /* Ensure the background is opaque */
+          opacity: 1;
         }
-        /* Collapsed state: show only a small circular button (60x60px) */
+        /* Collapsed state: small circular button (60px by 60px) */
         #chatbot.mobile.collapsed {
           width: 60px;
           height: 60px;
           overflow: hidden;
           border-radius: 50%;
         }
-        /* Expanded state: full width, covering 25% of the viewport height from the bottom */
+        /* Expanded state: becomes a square covering 25% of viewport width and 25% of viewport height */
         #chatbot.mobile.expanded {
-          width: 100%;
+          width: 25vw;
           height: 25vh;
-          border-radius: 0;
+          border-radius: 10px;
         }
         #chatbot.mobile header {
           padding: 10px;
@@ -284,9 +283,14 @@
           padding: 8px 12px;
           font-size: 0.9rem;
         }
+        /* Ensure the chatbot remains at bottom-right */
+        #chatbot.mobile {
+          bottom: 20px;
+          right: 20px;
+        }
       }
-      
-      /* CHATBOT TOGGLE BUTTON: always visible */
+
+      /* CHATBOT TOGGLE BUTTON: Always visible */
       #chatbot-toggle {
         position: fixed;
         bottom: 20px;
@@ -302,7 +306,7 @@
     </style>
   </head>
   <body>
-    <!-- Navigation Bar -->
+    <!-- NAVIGATION -->
     <nav>
       <ul>
         <li><a href="#homeSection">Home</a></li>
@@ -311,8 +315,8 @@
         <li><a href="#contactSection">Contact</a></li>
       </ul>
     </nav>
-    
-    <!-- Hero Section -->
+
+    <!-- HERO SECTION -->
     <section id="homeSection">
       <h1>Welcome to SS Airflow Technician Services</h1>
       <p>Delivering excellence in AC installation, repair &amp; maintenance.</p>
@@ -320,12 +324,12 @@
         Discover Our Services
       </button>
     </section>
-    
-    <!-- Services Section -->
+
+    <!-- SERVICES SECTION -->
     <section id="servicesSection">
       <h2>Our Services</h2>
       <div class="service-blocks">
-        <!-- AC Installation -->
+        <!-- AC INSTALLATION -->
         <div class="service-block">
           <img
             src="https://as1.ftcdn.net/v2/jpg/03/66/72/46/1000_F_366724680_BGFNkmZ5BAINyGzhsUZ37cKUj1OAfnZg.jpg"
@@ -348,7 +352,7 @@
             </ul>
           </div>
         </div>
-        <!-- AC Repair & Maintenance -->
+        <!-- AC REPAIR & MAINTENANCE -->
         <div class="service-block">
           <img
             src="https://3.imimg.com/data3/BH/SR/MY-8941393/split-ac-service-1000x1000.jpg"
@@ -371,7 +375,7 @@
             </ul>
           </div>
         </div>
-        <!-- Emergency AC Services -->
+        <!-- EMERGENCY AC SERVICES -->
         <div class="service-block">
           <img
             src="https://media.istockphoto.com/id/1437896577/photo/air-conditioner-technician-repairing-central-air-conditioning-system-with-outdoor-tools.jpg?s=612x612&w=0&k=20&c=Vt5lo-He1rM3_d-G5GHaFVYD0lyMGAtsUccuwNaCe08="
@@ -398,8 +402,8 @@
         </div>
       </div>
     </section>
-    
-    <!-- Booking Section -->
+
+    <!-- BOOKING SECTION -->
     <section id="bookingSection">
       <h2>Book a Service</h2>
       <div class="booking-form">
@@ -419,8 +423,8 @@
         <div id="formStatus"></div>
       </div>
     </section>
-    
-    <!-- Contact Section -->
+
+    <!-- CONTACT SECTION -->
     <section id="contactSection">
       <h2>Contact Us</h2>
       <p>Office Address: Kukatpally, Hyderabad, India.</p>
@@ -430,8 +434,8 @@
         <a href="mailto:sweneasbel@gmail.com">sweneasbel@gmail.com</a>
       </p>
     </section>
-    
-    <!-- Footer with Google Map Embed -->
+
+    <!-- FOOTER with GOOGLE MAP EMBED -->
     <footer>
       <div class="map-container">
         <iframe
@@ -442,11 +446,11 @@
       </div>
       <p>&copy; 2025 SS Airflow Technician Services. All rights reserved.</p>
     </footer>
-    
-    <!-- Chatbot Toggle Button -->
+
+    <!-- CHATBOT TOGGLE BUTTON -->
     <button id="chatbot-toggle" onclick="toggleChatbot()">Chat with us!</button>
-    
-    <!-- Chatbot Sidebar -->
+
+    <!-- CHATBOT SIDEBAR -->
     <div id="chatbot">
       <header>
         <span>Chatbot</span>
@@ -460,13 +464,13 @@
         <button onclick="sendMessage()">Send</button>
       </div>
     </div>
-    
-    <!-- Firebase & Custom JavaScript -->
+
+    <!-- FIREBASE & CUSTOM JAVASCRIPT -->
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
       import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
-    
+      
       // Firebase configuration
       const firebaseConfig = {
         apiKey: "AIzaSyCyaQDeARmkZwdOuo8v0UZmPUzyXERdJ5w",
@@ -478,16 +482,16 @@
         appId: "1:831580257151:web:ab95a77ddbec2ccbd3f84a",
         measurementId: "G-XMVGN2MY2E"
       };
-    
+      
       // Initialize Firebase and Analytics
       const appFirebase = initializeApp(firebaseConfig);
       const analytics = getAnalytics(appFirebase);
       const db = getDatabase(appFirebase);
-    
+      
       // Booking form submission
       const bookingForm = document.getElementById("bookingForm");
       const formStatus = document.getElementById("formStatus");
-    
+      
       bookingForm.addEventListener("submit", (e) => {
         e.preventDefault();
         const bookingData = {
@@ -498,7 +502,7 @@
           message: document.getElementById("message").value,
           timestamp: Date.now()
         };
-    
+      
         push(ref(db, "bookings"), bookingData)
           .then(() => {
             bookingForm.reset();
@@ -515,12 +519,12 @@
             formStatus.innerText = "Error: " + error.message;
           });
       });
-    
+      
       // Chatbot functions
       function toggleChatbot() {
         var chatbot = document.getElementById("chatbot");
         if (window.innerWidth < 768) {
-          // Mobile mode: ensure "mobile" class is added.
+          // Mobile mode: ensure the "mobile" class is added.
           if (!chatbot.classList.contains("mobile")) {
             chatbot.classList.add("mobile");
           }
@@ -528,7 +532,7 @@
           if (chatbot.classList.contains("collapsed")) {
             chatbot.classList.remove("collapsed");
             chatbot.classList.add("expanded");
-            // Push state to handle back button
+            // Push state so the back button will collapse the chat.
             history.pushState({ chatOpen: true }, "", location.href);
           } else if (chatbot.classList.contains("expanded")) {
             chatbot.classList.remove("expanded");
@@ -538,7 +542,7 @@
             }
           }
         } else {
-          // Desktop mode: toggle display (unchanged)
+          // Desktop mode: toggle display and set "desktop" class when shown.
           if (chatbot.style.display === "none" || chatbot.style.display === "") {
             chatbot.style.display = "flex";
             chatbot.classList.add("desktop");
@@ -551,27 +555,27 @@
         }
       }
       window.toggleChatbot = toggleChatbot;
-    
+      
       function sendMessage() {
         const chatInput = document.getElementById("chatInput");
         const message = chatInput.value.trim();
         if (message === "") return;
         const chatMessages = document.getElementById("chatMessages");
-    
+      
         const userMessage = document.createElement("p");
         userMessage.innerHTML = "<strong>You:</strong> " + message;
         chatMessages.appendChild(userMessage);
         chatInput.value = "";
-    
+      
         const botResponse = getBotResponse(message);
         const botMessage = document.createElement("p");
         botMessage.innerHTML = "<strong>Chatbot:</strong> " + botResponse;
         chatMessages.appendChild(botMessage);
-    
+      
         chatMessages.scrollTop = chatMessages.scrollHeight;
       }
       window.sendMessage = sendMessage;
-    
+      
       function getBotResponse(message) {
         message = message.toLowerCase();
         if (message.includes("price") || message.includes("cost")) {
@@ -591,13 +595,13 @@
         }
       }
       window.getBotResponse = getBotResponse;
-    
+      
       function scrollToSection(sectionId) {
         const section = document.getElementById(sectionId);
         section.scrollIntoView({ behavior: "smooth" });
       }
       window.scrollToSection = scrollToSection;
-    
+      
       // Set default mobile state (collapsed) on page load
       document.addEventListener("DOMContentLoaded", function () {
         if (window.innerWidth < 768) {
@@ -605,7 +609,7 @@
           chatbot.classList.add("mobile", "collapsed");
         }
       });
-    
+      
       // Listen for the back button (popstate) on mobile devices
       window.addEventListener("popstate", function (event) {
         if (window.innerWidth < 768) {
