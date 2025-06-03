@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SS Airflow Technician Services</title>
     <!-- Google Fonts for modern typography -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
     <style>
       /* GLOBAL STYLES */
       body {
@@ -56,8 +53,7 @@
       /* HERO SECTION */
       #homeSection {
         position: relative;
-        background: url('https://images.unsplash.com/photo-1581091870627-3eab5eded004?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')
-          no-repeat center center/cover;
+        background: url('https://images.unsplash.com/photo-1581091870627-3eab5eded004?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
         height: 100vh;
         display: flex;
         flex-direction: column;
@@ -232,7 +228,7 @@
       }
 
       /* CHATBOT STYLES */
-      /* Desktop Chatbot: unchanged – appears as a sidebar when toggled */
+      /* Desktop Chatbot: Unchanged – appears as a sidebar on desktop when toggled */
       #chatbot.desktop {
         display: flex;
         position: fixed;
@@ -258,23 +254,23 @@
           flex-direction: column;
           z-index: 1001;
         }
-        /* Collapsed state: small circular button (60x60px) */
+        /* Collapsed state: a 60×60px circular button with navy blue */
         #chatbot.mobile.collapsed {
           width: 60px;
           height: 60px;
           overflow: hidden;
           border-radius: 50%;
-          background: #001f3f; /* Navy blue */
+          background: #001f3f;
         }
-        /* Expanded state: appears in bottom-right as a panel occupying 30% width and 40% height of the viewport */
+        /* Expanded state: a panel that occupies 40vh in height and 40vw in width for better readability */
         #chatbot.mobile.expanded {
-          width: 30vw;
+          width: 40vw;
           height: 40vh;
           border-radius: 10px;
-          background: #001f3f; /* Navy blue for the container */
+          background: #001f3f;
           color: #fff;
         }
-        /* Mobile header (expanded) */
+        /* Mobile expanded header */
         #chatbot.mobile.expanded header {
           background: #001f3f;
           color: #fff;
@@ -292,7 +288,7 @@
           padding: 8px 12px;
           font-size: 0.9rem;
         }
-        /* Keep mobile chatbot pinned to bottom-right */
+        /* Ensure the mobile chatbot stays pinned to bottom-right */
         #chatbot.mobile {
           bottom: 20px;
           right: 20px;
@@ -315,6 +311,15 @@
         border-radius: 5px;
         cursor: pointer;
         z-index: 1002;
+      }
+      
+      /* Ensure the messages container scrolls independently */
+      #chatbot .messages {
+        flex: 1;
+        padding: 15px;
+        overflow-y: auto;
+        background: #f0f8ff;
+        color: #333;
       }
     </style>
   </head>
@@ -396,9 +401,7 @@
           />
           <div class="service-block-content">
             <h3>Emergency AC Services</h3>
-            <p>
-              Rapid response service to restore your comfort in critical moments.
-            </p>
+            <p>Rapid response service to restore your comfort in critical moments.</p>
             <div class="video-container">
               <iframe
                 src="https://www.shutterstock.com/shutterstock/videos/1100929891/preview/stock-footage-air-conditioning-roof-and-technician-man-repair-maintenance-and-working-on-fan-or-aircon-power.webm"
@@ -425,12 +428,7 @@
           <input type="email" id="email" placeholder="Email Address" required />
           <input type="tel" id="phone" placeholder="Phone Number" required />
           <input type="text" id="address" placeholder="Address" required />
-          <textarea
-            id="message"
-            placeholder="Additional Details"
-            rows="4"
-            required
-          ></textarea>
+          <textarea id="message" placeholder="Additional Details" rows="4" required></textarea>
           <button type="submit">Submit Booking</button>
         </form>
         <div id="formStatus"></div>
@@ -442,8 +440,7 @@
       <h2>Contact Us</h2>
       <p>Office Address: Kukatpally, Hyderabad, India.</p>
       <p>Contact: 9603317909</p>
-      <p>
-        Email:
+      <p>Email:
         <a href="mailto:sweneasbel@gmail.com">sweneasbel@gmail.com</a>
       </p>
     </section>
@@ -451,11 +448,7 @@
     <!-- FOOTER with GOOGLE MAP EMBED -->
     <footer>
       <div class="map-container">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15125.80286878244!2d78.2432324!3d17.412281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7%3A0xae93b78392bafbc2!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1685337021378!5m2!1sen!2sin"
-          allowfullscreen=""
-          loading="lazy">
-        </iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15125.80286878244!2d78.2432324!3d17.412281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7%3A0xae93b78392bafbc2!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1685337021378!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
       </div>
       <p>&copy; 2025 SS Airflow Technician Services. All rights reserved.</p>
     </footer>
@@ -545,7 +538,7 @@
           if (chatbot.classList.contains("collapsed")) {
             chatbot.classList.remove("collapsed");
             chatbot.classList.add("expanded");
-            // Push state so that the back button will collapse the chat.
+            // Push state so the back button will collapse the chat.
             history.pushState({ chatOpen: true }, "", location.href);
           } else if (chatbot.classList.contains("expanded")) {
             chatbot.classList.remove("expanded");
@@ -555,7 +548,7 @@
             }
           }
         } else {
-          // Desktop mode: toggle display and use "desktop" class.
+          // Desktop mode: toggle display and set "desktop" class.
           if (chatbot.style.display === "none" || chatbot.style.display === "") {
             chatbot.style.display = "flex";
             chatbot.classList.add("desktop");
