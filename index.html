@@ -2,10 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SS Airflow Technician Services</title>
     <!-- Google Fonts for modern typography -->
     <link
@@ -235,7 +232,7 @@
       }
 
       /* CHATBOT STYLES */
-      /* Desktop Chatbot: Unchanged – appears as a sidebar when toggled */
+      /* Desktop Chatbot: unchanged – appears as a sidebar when toggled */
       #chatbot.desktop {
         display: flex;
         position: fixed;
@@ -261,33 +258,33 @@
           flex-direction: column;
           z-index: 1001;
         }
-        /* Collapsed state: small circular button (60x60px) in bottom-right */
+        /* Collapsed state: small circular button (60x60px) */
         #chatbot.mobile.collapsed {
           width: 60px;
           height: 60px;
           overflow: hidden;
           border-radius: 50%;
-          background: #FF3B30;  /* A vivid red for visibility */
+          background: #001f3f; /* Navy blue */
         }
-        /* Expanded state: appears at bottom-right as a square panel covering 25% of viewport width and 25% of viewport height */
+        /* Expanded state: appears in bottom-right as a panel occupying 30% width and 40% height of the viewport */
         #chatbot.mobile.expanded {
-          width: 25vw;
-          height: 25vh;
+          width: 30vw;
+          height: 40vh;
           border-radius: 10px;
-          background: #fff;  /* White background for content clarity */
-          color: #000;
+          background: #001f3f; /* Navy blue for the container */
+          color: #fff;
         }
-        /* Mobile header styling when expanded */
+        /* Mobile header (expanded) */
         #chatbot.mobile.expanded header {
-          background: #FF3B30;
+          background: #001f3f;
           color: #fff;
           padding: 10px;
           font-size: 0.9rem;
         }
-        /* Adjust mobile chat input styles when expanded */
+        /* Mobile expanded input area */
         #chatbot.mobile.expanded .input-area input {
           padding: 8px;
-          background: #f1f1f1;
+          background: #fff;
           color: #000;
           border: 1px solid #ccc;
         }
@@ -295,14 +292,18 @@
           padding: 8px 12px;
           font-size: 0.9rem;
         }
-        /* Ensure the mobile chatbot stays pinned to bottom-right */
+        /* Keep mobile chatbot pinned to bottom-right */
         #chatbot.mobile {
           bottom: 20px;
           right: 20px;
         }
+        #chatbot-toggle {
+          padding: 10px 15px;
+          font-size: 0.9rem;
+        }
       }
 
-      /* CHATBOT TOGGLE BUTTON: Always visible */
+      /* CHATBOT TOGGLE BUTTON: always visible */
       #chatbot-toggle {
         position: fixed;
         bottom: 20px;
@@ -536,7 +537,7 @@
       function toggleChatbot() {
         var chatbot = document.getElementById("chatbot");
         if (window.innerWidth < 768) {
-          // Mobile mode: add the mobile class if not present.
+          // Mobile mode: add "mobile" class if not present.
           if (!chatbot.classList.contains("mobile")) {
             chatbot.classList.add("mobile");
           }
@@ -544,7 +545,7 @@
           if (chatbot.classList.contains("collapsed")) {
             chatbot.classList.remove("collapsed");
             chatbot.classList.add("expanded");
-            // Push state so the back button will collapse the chat.
+            // Push state so that the back button will collapse the chat.
             history.pushState({ chatOpen: true }, "", location.href);
           } else if (chatbot.classList.contains("expanded")) {
             chatbot.classList.remove("expanded");
@@ -554,7 +555,7 @@
             }
           }
         } else {
-          // Desktop mode: toggle display and set the "desktop" class when shown.
+          // Desktop mode: toggle display and use "desktop" class.
           if (chatbot.style.display === "none" || chatbot.style.display === "") {
             chatbot.style.display = "flex";
             chatbot.classList.add("desktop");
